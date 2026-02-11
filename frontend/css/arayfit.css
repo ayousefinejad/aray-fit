@@ -1,0 +1,633 @@
+/* ═══════════════════════════════════════════════════════════
+   Meditation & Mindfulness PWA – Dark theme with calm colors
+   ═══════════════════════════════════════════════════════════ */
+
+#af-shell {
+    --af-bg-base:        #111113;
+    --af-bg-card:        #1a1a1e;
+    --af-bg-card-alt:    #222226;
+    --af-accent:         #8b7ab8;        /* Calm purple for meditation */
+    --af-accent-dim:     rgba(139,122,184,0.15);
+    --af-accent-glow:    rgba(139,122,184,0.35);
+    --af-text-primary:   #f0efe8;
+    --af-text-secondary: #8a8a90;
+    --af-text-muted:     #5e5e64;
+    --af-border:         #2e2e33;
+    --af-tab-height:     72px;
+
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--af-bg-base);
+    color: var(--af-text-primary);
+    font-family: 'Vazir', 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Desktop: center the app column on wide screens */
+@media (min-width: 481px) {
+    #af-shell {
+        background: #0a0a0b;
+        align-items: center;
+    }
+}
+
+/* Constrain inner elements to 480px */
+#af-shell > .af-topbar,
+#af-shell > .af-content {
+    width: 100%;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ═══ TOP BAR ═══ */
+.af-topbar {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--af-bg-base);
+    border-bottom: 1px solid var(--af-border);
+    padding-top: env(safe-area-inset-top);
+}
+.af-topbar-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--af-accent);
+    letter-spacing: 0.02em;
+}
+
+/* ═══ SCROLLABLE CONTENT ═══ */
+.af-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(var(--af-tab-height) + env(safe-area-inset-bottom));
+}
+
+/* ═══ TAB PANELS ═══ */
+.af-tab {
+    display: none;
+    padding: 16px;
+    animation: af-fadeUp 0.25s ease both;
+}
+.af-tab.af-active {
+    display: block;
+}
+
+@keyframes af-fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ SECTION ═══ */
+.af-section {
+    margin-top: 24px;
+}
+.af-section-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--af-text-secondary);
+    margin-bottom: 10px;
+}
+
+/* ═══════════════════════════════════════════════
+   خانه (HOME)
+   ═══════════════════════════════════════════════ */
+
+/* Today's Meditation Card */
+.af-today-card {
+    background: var(--af-bg-card);
+    border-radius: 16px;
+    padding: 22px 20px 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--af-accent-glow);
+}
+.af-today-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--af-accent-dim) 0%, transparent 60%);
+    pointer-events: none;
+}
+.af-today-badge {
+    display: inline-block;
+    background: var(--af-accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    position: relative;
+}
+.af-today-label {
+    font-size: 0.78rem;
+    color: var(--af-text-secondary);
+    margin-top: 10px;
+    position: relative;
+}
+.af-today-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 4px;
+    color: var(--af-text-primary);
+    position: relative;
+}
+.af-today-duration {
+    font-size: 0.85rem;
+    color: var(--af-text-secondary);
+    margin-top: 2px;
+    position: relative;
+}
+.af-today-btn {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 11px;
+    background: var(--af-accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: filter 0.2s;
+}
+.af-today-btn:active {
+    filter: brightness(0.88);
+}
+
+/* Stats Row */
+.af-stats-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+.af-stat-pill {
+    flex: 1;
+    background: var(--af-bg-card);
+    border-radius: 12px;
+    padding: 14px 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.af-stat-icon {
+    font-size: 1.2rem;
+}
+.af-stat-value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--af-text-primary);
+}
+.af-stat-label {
+    font-size: 0.68rem;
+    color: var(--af-text-secondary);
+    text-align: center;
+}
+
+/* Quick Meditations */
+.af-quick-meditations {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.af-meditation-card {
+    background: var(--af-bg-card);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.af-meditation-card:active {
+    background: var(--af-bg-card-alt);
+}
+.af-meditation-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--af-bg-card-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.af-meditation-info {
+    flex: 1;
+    min-width: 0;
+}
+.af-meditation-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--af-text-primary);
+}
+.af-meditation-meta {
+    font-size: 0.72rem;
+    color: var(--af-text-muted);
+    margin-top: 2px;
+}
+
+/* Card play/pause button (جلسات مدیتشن & جلسات اخیر) */
+.af-card-play-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    border: none;
+    background: var(--af-accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s, opacity 0.2s;
+}
+.af-card-play-btn:active {
+    transform: scale(0.95);
+}
+.af-card-play-btn:hover {
+    opacity: 0.9;
+}
+.af-card-play-btn .af-card-play-icon,
+.af-card-play-btn .af-card-pause-icon {
+    display: block;
+}
+
+/* Activity List (Recent Sessions) */
+.af-activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.af-activity-item {
+    background: var(--af-bg-card);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.af-activity-item:active {
+    background: var(--af-bg-card-alt);
+}
+.af-activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--af-bg-card-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.af-activity-info {
+    flex: 1;
+    min-width: 0;
+}
+.af-activity-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--af-text-primary);
+}
+.af-activity-meta {
+    font-size: 0.72rem;
+    color: var(--af-text-muted);
+    margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   پروفایل (PROFILE)
+   ═══════════════════════════════════════════════ */
+
+.af-avatar-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+.af-avatar {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 3px solid var(--af-accent);
+    box-shadow: 0 0 12px var(--af-accent-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--af-bg-card);
+    overflow: hidden;
+}
+.af-user-info {
+    text-align: center;
+    margin-top: 12px;
+}
+.af-user-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--af-text-primary);
+}
+.af-user-since {
+    font-size: 0.76rem;
+    color: var(--af-text-muted);
+    margin-top: 2px;
+}
+
+.af-profile-stats {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+.af-profile-stat {
+    flex: 1;
+    background: var(--af-bg-card);
+    border-radius: 12px;
+    padding: 14px 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.af-profile-stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--af-text-primary);
+}
+.af-profile-stat-label {
+    font-size: 0.67rem;
+    color: var(--af-text-secondary);
+    text-align: center;
+}
+
+/* Achievements */
+.af-achievements {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.af-achievement {
+    flex: 1;
+    min-width: 90px;
+    background: var(--af-bg-card);
+    border-radius: 12px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.af-achievement-icon {
+    font-size: 1.8rem;
+}
+.af-achievement-label {
+    font-size: 0.72rem;
+    color: var(--af-text-secondary);
+    text-align: center;
+}
+
+/* Settings */
+.af-settings-list {
+    display: flex;
+    flex-direction: column;
+}
+.af-settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--af-border);
+}
+.af-settings-item:last-child {
+    border-bottom: none;
+}
+.af-settings-label {
+    font-size: 0.88rem;
+    color: var(--af-text-primary);
+}
+.af-settings-value {
+    font-size: 0.82rem;
+    color: var(--af-text-muted);
+}
+.af-reminder-on {
+    color: #7adf7a;
+}
+
+/* ═══════════════════════════════════════════════
+   BOTTOM TAB BAR
+   ═══════════════════════════════════════════════ */
+.af-tabbar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    height: calc(var(--af-tab-height) + env(safe-area-inset-bottom));
+    background: var(--af-bg-base);
+    border-top: 1px solid var(--af-border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-top: 8px;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+.af-tab-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--af-text-muted);
+    padding: 0;
+    position: relative;
+    transition: color 0.2s;
+}
+.af-tab-btn span {
+    font-size: 0.68rem;
+}
+.af-tab-btn svg {
+    transition: stroke 0.2s;
+}
+
+/* Active indicator bar */
+.af-tab-btn::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: transparent;
+    transition: background 0.2s;
+}
+.af-tab-btn-active {
+    color: var(--af-accent);
+}
+.af-tab-btn-active::before {
+    background: var(--af-accent);
+}
+.af-tab-btn-active svg {
+    stroke: var(--af-accent);
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* Audio Player Modal - Full-screen with large circular play button */
+/* ═══════════════════════════════════════════════════════════ */
+.af-audio-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: linear-gradient(180deg, #1a1525 0%, #0f0d14 50%, #16131c 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: env(safe-area-inset-top) 24px env(safe-area-inset-bottom);
+    animation: afModalFadeIn 0.3s ease;
+}
+
+@keyframes afModalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.af-modal-close {
+    position: absolute;
+    top: calc(12px + env(safe-area-inset-top));
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.af-modal-close:active {
+    background: rgba(255,255,255,0.2);
+}
+
+.af-modal-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.af-modal-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+}
+
+.af-modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 8px;
+    padding: 0 16px;
+    word-break: break-word;
+}
+
+.af-modal-duration {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+}
+
+.af-modal-play-btn {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    color: #1a1525;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.af-modal-play-btn:active {
+    transform: scale(0.96);
+}
+.af-modal-play-btn:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+
+.af-modal-progress {
+    width: 100%;
+    max-width: 280px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    margin-top: 28px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.af-modal-progress-fill {
+    height: 100%;
+    background: rgba(255,255,255,0.8);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s;
+}
+
+.af-modal-times {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 280px;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+}
+
+.af-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 24px 0;
+}
+
+.af-modal-action-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.af-modal-action-btn:active {
+    color: #fff;
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="مدیتیشن و ذهن‌آگاهی - آرای">
+
+    <!-- iOS Safari specific meta tags for PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="آرای مدیتیشن">
+
+    <!-- Prevent iOS from auto-detecting phone numbers -->
+    <meta name="format-detection" content="telephone=no">
+
+    <title>مدیتیشن | آرای</title>
+    <link rel="stylesheet" href="css/arayfit.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#111113">
+</head>
+<body>
+
+<div id="af-shell">
+
+    <!-- Scrollable content -->
+    <div class="af-content">
+
+        <!-- ─── خانه ─── -->
+        <div class="af-tab af-tab-home af-active">
+
+            <!-- Today's Meditation Card -->
+            <div class="af-today-card">
+                <div class="af-today-badge">صبحگاهی</div>
+                <p class="af-today-label">امروز</p>
+                <h2 class="af-today-title">مدیتیشن تنفس آگاهانه</h2>
+                <p class="af-today-duration">۱۰ دقیقه</p>
+                <button class="af-today-btn">شروع مدیتیشن</button>
+            </div>
+
+            <!-- Quick Access Meditations -->
+            <div class="af-section">
+                <h3 class="af-section-title">جلسات مدیتشن</h3>
+                <div class="af-quick-meditations">
+                    <div class="af-meditation-card">
+                        <div class="af-meditation-icon">🌅</div>
+                        <div class="af-meditation-info">
+                            <div class="af-meditation-name">مدیتیشن صبحگاهی</div>
+                            <div class="af-meditation-meta">۱۰ دقیقه • انرژی مثبت</div>
+                        </div>
+                    </div>
+                    <div class="af-meditation-card">
+                        <div class="af-meditation-icon">🌙</div>
+                        <div class="af-meditation-info">
+                            <div class="af-meditation-name">آرامش پیش از خواب</div>
+                            <div class="af-meditation-meta">۱۵ دقیقه • خواب عمیق</div>
+                        </div>
+                    </div>
+                    <div class="af-meditation-card">
+                        <div class="af-meditation-icon">💆‍♀️</div>
+                        <div class="af-meditation-info">
+                            <div class="af-meditation-name">کاهش استرس</div>
+                            <div class="af-meditation-meta">۵ دقیقه • آرامش سریع</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ─── پروفایل ─── -->
+        <div class="af-tab af-tab-profile">
+
+            <!-- Avatar -->
+            <div class="af-avatar-wrap">
+                <div class="af-avatar">
+                    <svg viewBox="0 0 64 64" width="64" height="64" fill="none">
+                        <circle cx="32" cy="32" r="20" fill="#8b7ab8" opacity="0.3"/>
+                        <path d="M32 20 L32 44 M20 32 L44 32" stroke="#8b7ab8" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- User Info -->
+            <div class="af-user-info">
+                <h2 class="af-user-name">علی رضایی</h2>
+                <p class="af-user-since">عضو از فروردین ۱۴۰۴</p>
+            </div>
+
+            <!-- Profile Stats -->
+            <div class="af-profile-stats">
+                <div class="af-profile-stat">
+                    <span class="af-profile-stat-value">۲۴۰</span>
+                    <span class="af-profile-stat-label">دقیقه کل</span>
+                </div>
+                <div class="af-profile-stat">
+                    <span class="af-profile-stat-value">۱۸</span>
+                    <span class="af-profile-stat-label">جلسات</span>
+                </div>
+                <div class="af-profile-stat">
+                    <span class="af-profile-stat-value">۷</span>
+                    <span class="af-profile-stat-label">بیشترین پیاپی</span>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="af-section">
+                <h3 class="af-section-title">دستاوردها</h3>
+                <div class="af-achievements">
+                    <div class="af-achievement">
+                        <span class="af-achievement-icon">🏆</span>
+                        <span class="af-achievement-label">۷ روز پیاپی</span>
+                    </div>
+                    <div class="af-achievement">
+                        <span class="af-achievement-icon">⭐</span>
+                        <span class="af-achievement-label">۱۰ جلسه</span>
+                    </div>
+                    <div class="af-achievement">
+                        <span class="af-achievement-icon">🎯</span>
+                        <span class="af-achievement-label">۱۰۰ دقیقه</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="af-section">
+                <h3 class="af-section-title">تنظیمات</h3>
+                <div class="af-settings-list">
+                    <div class="af-settings-item">
+                        <span class="af-settings-label">زبان</span>
+                        <span class="af-settings-value">فارسی</span>
+                    </div>
+                    <div class="af-settings-item">
+                        <span class="af-settings-label">صدای زمینه</span>
+                        <span class="af-settings-value">طبیعت</span>
+                    </div>
+                    <div class="af-settings-item">
+                        <span class="af-settings-label">یادآوری روزانه</span>
+                        <span class="af-settings-value af-reminder-on">فعال</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end af-content -->
+
+    <!-- Bottom Tab Bar -->
+    <nav class="af-tabbar">
+        <button class="af-tab-btn af-tab-btn-active" data-tab="home">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>خانه</span>
+        </button>
+        <button class="af-tab-btn" data-tab="profile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                <circle cx="12" cy="8" r="4"/>
+            </svg>
+            <span>پروفایل</span>
+        </button>
+    </nav>
+
+    <!-- Audio Player Modal (full-screen, large circular play button) -->
+    <div class="af-audio-modal" id="audioPlayerModal" style="display: none;">
+        <button class="af-modal-close" id="modalCloseBtn" aria-label="بستن">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="af-modal-content">
+            <p class="af-modal-subtitle">مدیتیشن</p>
+            <h2 class="af-modal-title" id="modalTitle">فایل صوتی</h2>
+            <p class="af-modal-duration" id="modalDuration">در حال بارگذاری...</p>
+            <button class="af-modal-play-btn" id="modalPlayPauseBtn" aria-label="پخش/مکث">
+                <svg class="af-modal-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="af-modal-pause-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+            </button>
+            <div class="af-modal-progress" id="modalProgressBar">
+                <div class="af-modal-progress-fill" id="modalProgressFill"></div>
+            </div>
+            <div class="af-modal-times">
+                <span id="modalCurrentTime">0:00</span>
+                <span id="modalTotalTime">0:00</span>
+            </div>
+        </div>
+        <div class="af-modal-actions">
+            <button class="af-modal-action-btn" aria-label="اشتراک‌گذاری"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
+            <button class="af-modal-action-btn" aria-label="اطلاعات"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+            <button class="af-modal-action-btn" aria-label="پخش روی دستگاه"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></button>
+            <button class="af-modal-action-btn" aria-label="تنظیمات"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></button>
+        </div>
+    </div>
+
+</div><!-- end af-shell -->
+
+<script src="js/arayfit.js"></script>
+</body>
+</html>
