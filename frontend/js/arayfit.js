@@ -359,10 +359,8 @@
                         });
                     });
                 } else {
-                    // No API data: make placeholder cards clickable so user can see the player
-                    quickMeditations.querySelectorAll('.af-meditation-card').forEach(card => {
-                        card.addEventListener('click', showPlayerPlaceholder);
-                    });
+                    // No audio files: clear the section
+                    quickMeditations.innerHTML = '';
                 }
             }
 
@@ -370,16 +368,14 @@
             if (audioFiles.length > 0) {
                 console.log(`✅ Loaded ${audioFiles.length} audio files`);
             } else {
-                console.log('No audio files from API; placeholder cards show player on click');
+                console.log('No audio files from API; section cleared');
             }
         } catch (error) {
             console.error('❌ Error loading audio files:', error);
-            // On error, still make placeholder cards show the player
+            // On error, clear the section
             const quickMeditations = document.querySelector('.af-quick-meditations');
             if (quickMeditations) {
-                quickMeditations.querySelectorAll('.af-meditation-card').forEach(card => {
-                    card.addEventListener('click', showPlayerPlaceholder);
-                });
+                quickMeditations.innerHTML = '';
             }
         }
     }
