@@ -304,14 +304,24 @@
     }
 
     async function loadAudioFiles() {
+        const quickMeditations = document.querySelector('.af-quick-meditations');
+        
+        // Show loading message
+        if (quickMeditations) {
+            quickMeditations.innerHTML = '<p style="text-align: center; color: #888; padding: 2rem;">در حال بارگذاری...</p>';
+        }
+
         try {
             const response = await fetch('/api/audio/list?limit=10');
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
-
             const audioFiles = (data.success && data.audio_files) ? data.audio_files : [];
 
             // Update "جلسات مدیتشن" section (even 1 or 2 files)
-            const quickMeditations = document.querySelector('.af-quick-meditations');
             if (quickMeditations) {
                 if (audioFiles.length > 0) {
                     const slice = audioFiles.slice(0, 3);
@@ -359,8 +369,8 @@
                         });
                     });
                 } else {
-                    // No audio files: clear the section
-                    quickMeditations.innerHTML = '';
+                    // No audio files: show empty message
+                    quickMeditations.innerHTML = '<p style="text-align: center; color: #888; padding: 2rem;">فایلی جهت نمایش وجود ندارد!</p>';
                 }
             }
 
@@ -372,10 +382,10 @@
             }
         } catch (error) {
             console.error('❌ Error loading audio files:', error);
-            // On error, clear the section
+            // On error, show empty message
             const quickMeditations = document.querySelector('.af-quick-meditations');
             if (quickMeditations) {
-                quickMeditations.innerHTML = '';
+                quickMeditations.innerHTML = '<p style="text-align: center; color: #888; padding: 2rem;">فایلی جهت نمایش وجود ندارد!</p>';
             }
         }
     }
